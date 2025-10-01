@@ -12,7 +12,6 @@ booleanos y/o números."""
 
 # Programa demostrativo de operadores en Python
 
-# Números de ejemplo
 a = 10
 b = 3
 
@@ -20,10 +19,10 @@ print("=== Operadores Aritméticos ===")
 print(f"{a} + {b} = {a + b}")
 print(f"{a} - {b} = {a - b}")
 print(f"{a} * {b} = {a * b}")
-print(f"{a} / {b} = {a / b}")     # División con decimales
-print(f"{a} // {b} = {a // b}")   # División entera
-print(f"{a} % {b} = {a % b}")     # Módulo
-print(f"{a} ** {b} = {a ** b}")   # Potencia
+print(f"{a} / {b} = {a / b}")     
+print(f"{a} // {b} = {a // b}")  
+print(f"{a} % {b} = {a % b}")    
+print(f"{a} ** {b} = {a ** b}")  
 
 x = True
 y = False
