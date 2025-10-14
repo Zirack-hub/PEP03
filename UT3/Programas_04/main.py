@@ -4,7 +4,6 @@ Programa principal que utiliza el paquete 'matematicas' para realizar:
 - Cálculo de áreas geométricas.
 """
 
-import sys
 
 from matematicas import (
     suma, resta, multiplicacion, division,

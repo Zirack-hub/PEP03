@@ -4,7 +4,6 @@ Paquete matematicas
 Contiene módulos con funciones de operaciones básicas, figuras geométricas y conversiones.
 """
 
-# Importaciones internas (opcional, para acceso directo desde el paquete)
 from .operaciones import suma, resta, multiplicacion, division
 from .figuras import area_rectangulo, area_triangulo, area_circulo
 from .conversiones import a_binario, a_hexadecimal, a_entero
