@@ -1,6 +1,4 @@
 """
-operaciones.py
----------------
 Módulo que contiene funciones básicas de operaciones matemáticas:
 - suma(a, b)
 - resta(a, b)

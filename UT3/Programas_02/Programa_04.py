@@ -1,5 +1,4 @@
 import turtle
-import tkinter as tk
 
 turtle.title("Cuadrado y Círculo")
 turtle.bgcolor("white")
