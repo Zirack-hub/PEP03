@@ -1,7 +1,4 @@
-from funciones import (
-    ataque_jugador, mostrar_jugador,
-    generar_enemigo ,ataque_enemigo, mostrar_enemigo
-)
+from funciones import *
 
 nombre=str(input("Introduce tu nombre:  "))
 conocimiento=int(input("introduce tu conocimiento(1-5):   "))

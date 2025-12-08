@@ -1,0 +1,7 @@
+entero=str(2)
+flotante=str(3.5)
+booleano=str(True)
+cadena_entero=int("1")
+cadena_flotante=float("2.5")
+cadena_cruda=(r"abc\n\t")
+print(cadena_cruda)
