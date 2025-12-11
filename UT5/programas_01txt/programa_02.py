@@ -1,9 +1,9 @@
 try:
     with open("./ficheros/datos.txt", "r", encoding="utf-8") as fichero:
-        
+        numerado = int(0)
         for fila in fichero:
-            
-            print(fila)
+            numerado += 1
+            print(numerado,fila)
 
 except FileNotFoundError:
     print("Error: El archivo 'datos.txt' no existe o no se encuentra en el directorio.")

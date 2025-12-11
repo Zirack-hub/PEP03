@@ -1,12 +1,13 @@
+from os import strerror
 try:
-    with open("./ficheros/datos.txt", "r", encoding="utf-8") as fichero:
+    with open("./ficheros/inexistente.txt", "r", encoding="utf-8") as fichero:
         
         for fila in fichero:
             
             print(fila)
 
-except FileNotFoundError:
-    print("Error: El archivo 'datos.txt' no existe o no se encuentra en el directorio.")
+except FileNotFoundError as e:
+    print(f"Error: {strerror(e.errno)}")
 
 except PermissionError:
     print("Error: No tienes permisos para leer el archivo.")

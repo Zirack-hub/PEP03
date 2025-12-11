@@ -1,10 +1,16 @@
 try:
-    with open("./ficheros/datos.txt", "r", encoding="utf-8") as fichero:
-        
-        for fila in fichero:
-            
-            print(fila)
+    numereos = int(0)
 
+    with open("./ficheros/saludo.txt", "r", encoding="utf-8") as fichero:
+        
+        caracter = fichero.read(1)
+        while caracter != "":
+            if caracter != " ":
+                numereos += 1
+            caracter = fichero.read(1)
+        
+        print(f"El numero de caracteres es {numereos}")
+        
 except FileNotFoundError:
     print("Error: El archivo 'datos.txt' no existe o no se encuentra en el directorio.")
 

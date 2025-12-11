@@ -1,9 +1,7 @@
 try:
-    with open("./ficheros/datos.txt", "r", encoding="utf-8") as fichero:
+    with open("./ficheros/saludo.txt", "a", encoding="utf-8") as fichero:
         
-        for fila in fichero:
-            
-            print(fila)
+        fichero.writelines("HOLA PUTO FICHERO 3")
 
 except FileNotFoundError:
     print("Error: El archivo 'datos.txt' no existe o no se encuentra en el directorio.")

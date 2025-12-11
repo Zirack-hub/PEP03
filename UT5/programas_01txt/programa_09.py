@@ -1,10 +1,16 @@
 try:
-    with open("./ficheros/datos.txt", "r", encoding="utf-8") as fichero:
+    contador =1
+    
+    with open("./ficheros/datos.txt", "r+", encoding="utf-8") as fichero:
         
         for fila in fichero:
-            
             print(fila)
+            
+        fichero.writelines("\nArchivo actualizado correctamente")
 
+        
+        
+        
 except FileNotFoundError:
     print("Error: El archivo 'datos.txt' no existe o no se encuentra en el directorio.")
 
