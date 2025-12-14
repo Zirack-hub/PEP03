@@ -1,0 +1,46 @@
+from abc import ABC, abstractmethod
+class AnimalMarino:
+
+    def __init__(self, nombre):
+        self.__nombre = nombre
+    
+    @property
+    def nombre(self):
+        return self.__nombre
+    
+    @nombre.setter
+    def nombre(self, nombre_nuevo):
+        if (isinstance(nombre_nuevo,str)):
+            self.__nombre = nombre_nuevo
+        else:    
+            raise (TypeError("El nombre debe ser un string"))
+    
+    @abstractmethod
+    def saluda(self):
+        raise NotImplementedError
+    
+    @abstractmethod
+    def sonido(self):
+        raise NotImplementedError
+
+class Delfin(AnimalMarino):
+
+    def __init__(self, nombre):
+        super().__init__(nombre)
+
+    def saludar(self):
+        print(f"Soy un delfin llamado {self.nombre}")
+    
+    def sonido(self):
+        print("Click y silbidos, de vez en cuando se cagan en python y mysql")
+    
+class Tiburon(AnimalMarino):
+    def __init__(self, nombre):
+        super().__init__(nombre)
+
+    def saludar(self):
+        print(f"Soy un Tiburon llamado {self.nombre}")
+    
+    def sonido(self):
+        print("No tiene un sonido audible característico ademas de LEVANTA FUKING PANZA")
+
