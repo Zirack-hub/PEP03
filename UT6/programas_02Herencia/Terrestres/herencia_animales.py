@@ -100,7 +100,7 @@ class Manada:
     
     def agregar_animal(self, animal):
         if isinstance(animal, AnimalTerrestre):
-            self.__animales.append(animal)
+            self.__lista_animales.append(animal)
         else:
             raise TypeError("Solo se pueden agregar animales")
 
