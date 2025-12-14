@@ -1,4 +1,6 @@
 from herencia_animales import *
+from veterinario import *
+from reservanatural import *
 
 try:
     animal1 = AnimalTerrestre("Kuma", 5, 300)
@@ -7,6 +9,8 @@ try:
     animal4 = Ave("Alvaro", 4, 3, False)
     animal4 = Ave("Alvaro", 4, 3, False)
     animal6 = AnimalTerrestre("Titan", 2, 150)
+    veterinario1 = veterinario("Clefo")
+    veterinario1.revisar_animal(animal1)
 
 
     lista = [animal3, animal4]
@@ -20,6 +24,12 @@ try:
     manada.agregar_animal(animal6)
 
     for animal in manada:
+        print(animal)
+
+    print("LISTA DE ANIMALES EN LA RESERVA NATURAL:")
+    reserva = ReservaNatural([animal1, animal2, animal3, animal4])
+    
+    for animal in reserva:
         print(animal)
     
 except Exception as e:

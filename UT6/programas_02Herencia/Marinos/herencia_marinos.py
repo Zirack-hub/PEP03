@@ -35,12 +35,33 @@ class Delfin(AnimalMarino):
         print("Click y silbidos, de vez en cuando se cagan en python y mysql")
     
 class Tiburon(AnimalMarino):
-    def __init__(self, nombre):
+    def __init__(self, nombre, tamañocora, tamañopulm):
         super().__init__(nombre)
+        self.corazon = corazon(tamañocora)
+        self.pulmon = pulmon(tamañopulm)
 
     def saludar(self):
         print(f"Soy un Tiburon llamado {self.nombre}")
     
     def sonido(self):
         print("No tiene un sonido audible característico ademas de LEVANTA FUKING PANZA")
+    
+    def nadar(self):
+        self.corazon.latir()
+        self.pulmon.respitar()
+
+    
+class corazon:
+    def __init__(self, tamaño):
+        self.tamaño = tamaño
+    
+    def latir (self):
+        print("Estoy latiendo")
+
+class pulmon:
+    def __init__(self, tamaño):
+        self.tamaño = tamaño
+    
+    def respitar (self):
+        print("Estoy respitando")
 
