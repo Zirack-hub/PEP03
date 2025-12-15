@@ -1,0 +1,26 @@
+{
+  "personajes": [
+    {
+      "tipo": "Mago",
+      "nombre": "Merlin",
+      "vida": 80,
+      "hechizos": {
+        "bola_de_fuego": 30,
+        "hielo": 20
+      }
+    },
+    {
+      "tipo": "Guerrero",
+      "nombre": "TINA CHIKITNA",
+      "vida": 100,
+      "armas": ["espada", "hacha", "lanza"]
+    },
+    {
+      "tipo": "Arquero",
+      "nombre": "Legolas",
+      "vida": 90,
+      "punteria": 10
+    }
+  ]
+}
+

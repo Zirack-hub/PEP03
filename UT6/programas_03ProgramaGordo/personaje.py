@@ -26,6 +26,8 @@ class Personaje(ABC):
     @abstractmethod
     def atacar(self, objetivo):
         raise NotImplementedError
+    
+    
 
 # Clase Arma
 class Arma:
@@ -66,6 +68,13 @@ class Guerrero(Personaje):
         self.arma = random.choice(armas)
         print(f"{self.nombre} ha cambiado de arma y ahora va a pegarte con: {self.arma.nombre}")
 
+    def to_dict(self):
+        return{
+            "tipo": self.__class__.__name___,
+            "nombre": self.nombre,
+            "vida": self.vida
+        }
+
 # Mago
 class Mago(Personaje):
     def __init__(self, nombre, vida, diccionario_hechizos, mana=100):
@@ -99,4 +108,21 @@ class Mago(Personaje):
         print(f"{self.nombre} lanza {hechizo} y causa {danio} de daño.")
         print(f"Le quedan {self.mana} de maná")
 
+class Arquero(Personaje):
+    def __init__(self, nombre, vida, punteria=10,):
+        super().__init__(nombre, vida)
+        self._punteria = punteria
 
+    @property
+    def punteria(self):
+        return self._punteria
+    
+    @punteria.setter
+    def punteria(self, nueva_punteria):
+        self._punteria = nueva_punteria
+    
+    def atacar(self, objetivo):
+        danio = self._punteria + random.randint(0, 3)
+        objetivo.vida -= danio  # ⚠️ usamos la propiedad, no _vida
+        print(f"{self.nombre} apunta con su arco y causa {danio} de daño.")
+        self.punteria += 10

@@ -1,4 +1,146 @@
 from personaje import *
+import json
+
+
+
+def main ():
+    diccionario_hechizos = {
+                            "Bola de fuego": (18, 5),
+                            "Rayo": (32 , 7),
+                            }
+    espada = Arma("Espada larga", 20)
+    alabarda = Arma("Alabarda", 25)
+    mandoble = Arma("Mandoble", 30)
+    listaArmas = [espada, alabarda, mandoble]
+
+    mago = Mago("Merlin", 80, diccionario_hechizos)
+    guerrero = Guerrero("TINA CHIKITNA", 100, listaArmas)
+    arquero = Arquero("Legolas", 90)
+    personajes = [mago, guerrero, arquero]
+
+    while True:
+        print("---MENU----")
+        print("1-Crear Personaje")
+        print("2-Realizar Batalla")
+        print("3-Empezar TCT")
+        print("4-Salir")
+        print("5-Mostrar Personajes")   # Nueva opción
+        print("----------------")
+        
+        opcion = input("Introduce el numero de tu seleccion: ").strip()
+        
+        if opcion == "1":
+            print("Crear Personaje")
+            nuevo_personaje = creacion_personaje()
+            if nuevo_personaje:
+                personajes.append(nuevo_personaje)
+        elif opcion == "2":
+            print("Realizar Batalla")
+            break
+        elif opcion == "3":
+            print("Empezar TCT")
+            personajes.r
+            break
+        elif opcion == "4":
+            crear_Json(personajes)
+        elif opcion == "5":  # Mostrar personajes
+            mostrar_personajes(personajes)
+        else:
+            print("Opción no válida")
+
+
+def crear_Json(personajes):
+    try:
+        # Crear el archivo JSON con codificación UTF-8
+        with open("./ficheros/personajesCopia.json", "w", encoding="utf-8") as fichero:
+            for personaje in personajes:
+                json.dump(personaje, fichero, ensure_ascii=False, indent=4)
+
+        print("Archivo 'juegosCopia.json' creado correctamente.")
+
+    except Exception as e:
+        print(f"Error al crear el archivo: {e}")
+    
+
+   
+def creacion_personaje():
+    diccionario_hechizos = {
+                            "Bola de fuego": (18, 5),
+                            "Rayo": (32 , 7),
+                            }
+    espada = Arma("Espada larga", 20)
+    alabarda = Arma("Alabarda", 25)
+    mandoble = Arma("Mandoble", 30)
+    listaArmas = [espada, alabarda, mandoble]
+    print("---MENU----")
+    print("1-Guerrero")
+    print("2-Mago")
+    print("3-Arquero")
+    opcion = input("Introduce el numero de tu seleccion: ")
+    if opcion == "1":
+        print("Has elegido Guerrero")
+        nombre = input("Introduce el nombre de tu personaje: ").strip()
+        guerrero_creacion = Guerrero(nombre, 100, listaArmas)
+        return guerrero_creacion
+    elif opcion == "2":
+        print("Has elegido Mago")
+        nombre = input("Introduce el nombre de tu personaje: ").strip()
+        mago_creacion = Mago(nombre, 80, diccionario_hechizos)
+        return mago_creacion
+    elif opcion == "3":
+        print("Has elegido Arquero")
+        nombre = input("Introduce el nombre de tu personaje: ").strip()
+        arquero_creacion = Arquero(nombre, 90)
+        return arquero_creacion
+    else:
+        print("Opción no válida")
+        return None
+    
+
+
+
+def mostrar_personajes(personajes):
+    if not personajes:
+        print("No hay personajes creados.")
+        return
+
+    print("---LISTA DE PERSONAJES---")
+    for i, p in enumerate(personajes, start=1):
+        # Información básica
+        info = f"{i}- {p.nombre} ({p.__class__.__name__}) | Vida: {p.vida} | Estado: {'Vivo' if p.vivo else 'Muerto'}"
+
+        # Información específica según tipo
+        if isinstance(p, Guerrero):
+            try:
+                info += f" | Arma actual: {p.arma.nombre}"
+            except AttributeError:
+                info += " | Arma actual: Sin arma"
+
+        elif isinstance(p, Mago):
+            # Mostrar hechizos de manera segura
+            hechizos_list = []
+            if p.diccionario_hechizos:
+                for k, v in p.diccionario_hechizos.items():
+                    try:
+                        danio = v[0]
+                        mana = v[1]
+                        hechizos_list.append(f"{k}({danio} dmg, {mana} mana)")
+                    except (TypeError, IndexError):
+                        hechizos_list.append(f"{k}(datos inválidos)")
+                hechizos = ', '.join(hechizos_list)
+            else:
+                hechizos = "Sin hechizos"
+            info += f" | Hechizos: {hechizos} | Mana: {getattr(p, 'mana', 'N/A')}"
+
+        elif isinstance(p, Arquero):
+            info += f" | Puntería: {getattr(p, 'punteria', 'N/A')}"
+
+        print(info)
+    print("-------------------------")
+
+
+
+
 
 def combate(p1, p2):
     turno = 1
@@ -17,22 +159,52 @@ def combate(p1, p2):
     vencedor = p1 if p1.vivo else p2
     print(f"🏆 {vencedor.nombre} gana con {vencedor.vida} de vida restante.")
 
-        
-
-diccionario_hechizos = {
-                        "Bola de fuego": (18, 5),
-                        "Rayo": (32 , 7),
-                        "Descarga de pirofrio": (100, 50)
-                        }
-
-mago = Mago("Merlin", 80, diccionario_hechizos)
-
-espada = Arma("Espada larga", 20)
-pistola = Arma("UNA FUCKING PISTOLA", 50)
-bazoka = Arma("UN FUCKING BAZOKA", 200)
-listaArmas = [espada, pistola, bazoka]
-guerrero = Guerrero("TINA CHIKITNA", 100, listaArmas)
 
 
-combate(mago, guerrero)
+def tct(p1, p2, p3):
+    turno = 1
 
+    while sum(p.vivo for p in (p1, p2, p3)) >= 2:
+        print(f"\n--- Turno {turno} ---")
+
+        if p1.vivo:
+            objetivos = [p for p in (p2, p3) if p.vivo]
+            if objetivos:
+                objetivo = random.choice(objetivos)
+                p1.atacar(objetivo)
+                print(f"{objetivo.nombre} queda con {objetivo.vida}\n")
+
+        if p2.vivo:
+            objetivos = [p for p in (p1, p3) if p.vivo]
+            if objetivos:
+                objetivo = random.choice(objetivos)
+                p2.atacar(objetivo)
+                print(f"{objetivo.nombre} queda con {objetivo.vida}\n")
+
+        if p3.vivo:
+            objetivos = [p for p in (p1, p2) if p.vivo]
+            if objetivos:
+                objetivo = random.choice(objetivos)
+                p3.atacar(objetivo)
+                print(f"{objetivo.nombre} queda con {objetivo.vida}\n")
+
+        turno += 1
+
+    print("\n--- FIN DEL COMBATE ---\n")
+    vivos = [p for p in (p1, p2, p3) if p.vivo]
+    vencedor = vivos[0] if vivos else None
+
+    if vencedor:
+        print(f"🏆 {vencedor.nombre} gana con {vencedor.vida} de vida restante.")
+
+
+#mago = Mago("Merlin", 80, diccionario_hechizos)
+#guerrero = Guerrero("TINA CHIKITNA", 100, listaArmas)
+#arquero = Arquero("Legolas", 90)
+#
+#
+#
+#tct(mago, guerrero, arquero)
+
+if __name__ == "__main__":
+    main()
