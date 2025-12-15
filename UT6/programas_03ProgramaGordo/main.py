@@ -1,5 +1,5 @@
 from personaje import *
-import json
+import json, os, traceback
 
 
 
@@ -24,7 +24,7 @@ def main ():
         print("2-Realizar Batalla")
         print("3-Empezar TCT")
         print("4-Salir")
-        print("5-Mostrar Personajes")   # Nueva opción
+        print("5-Mostrar Personajes")   
         print("----------------")
         
         opcion = input("Introduce el numero de tu seleccion: ").strip()
@@ -36,10 +36,13 @@ def main ():
                 personajes.append(nuevo_personaje)
         elif opcion == "2":
             print("Realizar Batalla")
+            batalla(personajes)
             break
         elif opcion == "3":
             print("Empezar TCT")
-            personajes.r
+            participantes = seleccionar_aleatorios(personajes)
+            tct(*participantes)
+            
             break
         elif opcion == "4":
             crear_Json(personajes)
@@ -49,18 +52,38 @@ def main ():
             print("Opción no válida")
 
 
+def seleccionar_aleatorios(personajes, cantidad=3):
+    if cantidad > len(personajes):
+        raise ValueError("No hay suficientes personajes en la lista")
+    return random.sample(personajes, cantidad)
+
+def batalla(personajes):
+    print("selecciona 2 personajes")
+    mostrar_personajes(personajes)
+    p1 = input("Introduce el primer personaje: ")
+    p2 = input("Introduce el primer personaje: ")
+    combatiente1 = pj_nombre(personajes, p1)
+    combatiente2 = pj_nombre(personajes, p2)
+
+    combate(combatiente1, combatiente2)
+
+def pj_nombre(personajes, nombre):
+    for personaje in personajes:
+        if personaje.nombre.lower() == nombre.lower():
+            return personaje
+
+
 def crear_Json(personajes):
     try:
-        # Crear el archivo JSON con codificación UTF-8
-        with open("./ficheros/personajesCopia.json", "w", encoding="utf-8") as fichero:
-            for personaje in personajes:
-                json.dump(personaje, fichero, ensure_ascii=False, indent=4)
+        with open("./ficheros/personajesCopia.json", "w", encoding="utf-8") as f:
+            hola = json.dump(personajes, f, default=lambda o: o.__dict__, indent=4, ensure_ascii=False)
 
-        print("Archivo 'juegosCopia.json' creado correctamente.")
-
-    except Exception as e:
-        print(f"Error al crear el archivo: {e}")
-    
+        print("escrito en:", os.path.abspath("./ficheros/personajesCopia.json"))
+        print("tamaño bytes:", os.path.getsize("./ficheros/personajesCopia.json"))
+        print(hola)
+        f.close()
+    except Exception:
+        traceback.print_exc()
 
    
 def creacion_personaje():

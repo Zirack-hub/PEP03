@@ -1,0 +1,81 @@
+[
+    {
+        "_nombre": "Merlin",
+        "_vida": 80,
+        "_mana": 100,
+        "_diccionario_hechizos": {
+            "Bola de fuego": [
+                18,
+                5
+            ],
+            "Rayo": [
+                32,
+                7
+            ]
+        }
+    },
+    {
+        "_nombre": "TINA CHIKITNA",
+        "_vida": 100,
+        "arsenal": [
+            {
+                "_nombre": "Espada larga",
+                "_danio": 20
+            },
+            {
+                "_nombre": "Alabarda",
+                "_danio": 25
+            },
+            {
+                "_nombre": "Mandoble",
+                "_danio": 30
+            }
+        ],
+        "_arma": {
+            "_nombre": "Mandoble",
+            "_danio": 30
+        }
+    },
+    {
+        "_nombre": "Legolas",
+        "_vida": 90,
+        "_punteria": 10
+    },
+    {
+        "_nombre": "Sorrita",
+        "_vida": 100,
+        "arsenal": [
+            {
+                "_nombre": "Espada larga",
+                "_danio": 20
+            },
+            {
+                "_nombre": "Alabarda",
+                "_danio": 25
+            },
+            {
+                "_nombre": "Mandoble",
+                "_danio": 30
+            }
+        ],
+        "_arma": {
+            "_nombre": "Mandoble",
+            "_danio": 30
+        }
+    },
+    {
+        "_nombre": "CarryPotter",
+        "_vida": 80,
+        "_mana": 100,
+        "_diccionario_hechizos": {
+            "Bola de fuego": [
+                18,
+                5
+            ],
+            "Rayo": [
+                32,
+                7
+            ]
+        }
+    }
+]
