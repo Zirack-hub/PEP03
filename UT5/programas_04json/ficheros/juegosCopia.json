@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "The Legend of Zelda: Breath of the Wild",
+        "plataforma": "Nintendo Switch",
+        "año": 2017
+    },
+    {
+        "nombre": "God of War",
+        "plataforma": "PlayStation 4",
+        "año": 2018
+    },
+    {
+        "nombre": "Minecraft",
+        "plataforma": "Multiplataforma",
+        "año": 2011
+    },
+    {
+        "nombre": "Expedition 33",
+        "plataforma": "Multiplataforma",
+        "año": 2025
+    }
+]
