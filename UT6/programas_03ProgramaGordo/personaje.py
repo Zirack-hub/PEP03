@@ -27,29 +27,6 @@ class Personaje(ABC):
     def atacar(self, objetivo):
         raise NotImplementedError
     
-    #def to_dict(self):
-    #    result = {"tipo": self.__class__.__name__, "nombre": self.nombre, "vida": self.vida}
-    #    
-    #    # Guerrero: serializa arsenal y arma actual
-    #    if isinstance(self, Guerrero):
-    #        result["arma_actual"] = {"nombre": self.arma.nombre, "danio": self.arma.danio}
-    #        result["arsenal"] = [{"nombre": arma.nombre, "danio": arma.danio} for arma in self.arsenal]
-    #    
-    #    # Mago: serializa maná y hechizos
-    #    elif isinstance(self, Mago):
-    #        result["mana"] = self.mana
-    #        # Convertimos los hechizos a lista de diccionarios
-    #        result["hechizos"] = [{"nombre": h, "danio": v[0], "coste_mana": v[1]} for h, v in self.diccionario_hechizos.items()]
-    #    
-    #    # Arquero: serializa puntería
-    #    elif isinstance(self, Arquero):
-    #        result["punteria"] = self.punteria
-    #    
-    #    elif isinstance(self, Arma):
-    #    
-    #    return result
-    #    
-
     
     
 

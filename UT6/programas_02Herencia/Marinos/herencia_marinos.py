@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-class AnimalMarino:
+class AnimalMarino():
 
     def __init__(self, nombre):
         self.__nombre = nombre

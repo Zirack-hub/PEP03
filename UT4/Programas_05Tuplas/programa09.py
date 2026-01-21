@@ -16,3 +16,5 @@ tupla_con_listas = ([10, 20, 30], [40, 50, 60], [70, 80, 90])
 print("Antes de modificar la lista:", tupla_con_listas)
 tupla_con_listas[2][1] = 99
 print("Después de modificar la lista:", tupla_con_listas)
+tupla_con_listas[2].append(99)
+print(tupla_con_listas)
